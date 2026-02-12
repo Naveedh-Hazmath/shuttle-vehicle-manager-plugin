@@ -1,0 +1,1445 @@
+/* Main theme colors */
+:root {
+  --svm-yellow: #FFCB05;
+  --svm-black: #000000;
+  --svm-white: #FFFFFF;
+  --svm-light-gray: #F5F5F5;
+  --svm-medium-gray: #DDDDDD;
+  --svm-dark-gray: #333333;
+  --svm-red: #FF4D4D;
+  --svm-green: #4CAF50;
+}
+
+/* Global Styles */
+.svm-dashboard-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  color: var(--svm-black);
+  background-color: var(--svm-white);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Buttons */
+.svm-button {
+  display: inline-block;
+  background-color: var(--svm-yellow);
+  color: var(--svm-black);
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.svm-button:hover {
+  background-color: var(--svm-black);
+  color: var(--svm-yellow);
+}
+
+.svm-button-secondary {
+  background-color: var(--svm-white);
+  color: var(--svm-black);
+  border: 1px solid var(--svm-black);
+}
+
+.svm-button-secondary:hover {
+  background-color: var(--svm-black);
+  color: var(--svm-white);
+}
+
+.svm-button-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.svm-button-delete {
+  background-color: var(--svm-red);
+  color: var(--svm-white);
+}
+
+.svm-button-delete:hover {
+  background-color: darkred;
+}
+
+/* Tabs navigation */
+.svm-dashboard-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--svm-yellow);
+  margin-bottom: 25px;
+}
+
+.svm-dashboard-tabs .tab {
+  padding: 12px 20px;
+  background: var(--svm-light-gray);
+  text-decoration: none;
+  color: var(--svm-black);
+  margin-right: 5px;
+  border-radius: 5px 5px 0 0;
+  font-weight: bold;
+}
+
+.svm-dashboard-tabs .tab.active {
+  background: var(--svm-yellow);
+  color: var(--svm-black);
+}
+
+.svm-dashboard-tabs .tab:hover {
+  background: var(--svm-yellow);
+  color: var(--svm-black);
+}
+
+.svm-dashboard-tabs .tab.logout {
+  margin-left: auto;
+  background: var(--svm-black);
+  color: var(--svm-yellow);
+}
+
+.svm-dashboard-tabs .tab.logout:hover {
+  background: var(--svm-dark-gray);
+}
+
+/* Section headers */
+.svm-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--svm-yellow);
+  padding-bottom: 10px;
+}
+
+.svm-section-header h2 {
+  margin: 0;
+  color: var(--svm-black);
+  font-weight: bold;
+}
+
+/* Forms */
+.form-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: var(--svm-light-gray);
+  border-radius: 5px;
+}
+
+.form-section h3 {
+  margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--svm-medium-gray);
+  color: var(--svm-black);
+  font-weight: bold;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--svm-black);
+}
+
+.form-group .required {
+  color: var(--svm-red);
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="datetime-local"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--svm-medium-gray);
+  border-radius: 4px;
+  background-color: var(--svm-white);
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.form-group .description {
+  font-size: 12px;
+  color: var(--svm-dark-gray);
+  margin-top: 5px;
+}
+
+.form-message {
+  margin-top: 15px;
+}
+
+.form-message .success {
+  color: var(--svm-green);
+  background: #e8f5e9;
+  padding: 10px;
+  border-radius: 4px;
+  border-left: 4px solid var(--svm-green);
+}
+
+.form-message .error {
+  color: var(--svm-red);
+  background: #ffebee;
+  padding: 10px;
+  border-radius: 4px;
+  border-left: 4px solid var(--svm-red);
+}
+
+.form-message .loading {
+  color: var(--svm-dark-gray);
+  background: var(--svm-light-gray);
+  padding: 10px;
+  border-radius: 4px;
+  border-left: 4px solid var(--svm-yellow);
+}
+
+/* Auth forms */
+.svm-auth-container {
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--svm-white);
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.svm-auth-tabs {
+  display: flex;
+  background: var(--svm-yellow);
+}
+
+.svm-auth-tabs .tab {
+  flex: 1;
+  text-align: center;
+  padding: 15px;
+  background: var(--svm-yellow);
+  text-decoration: none;
+  color: var(--svm-black);
+  font-weight: bold;
+}
+
+.svm-auth-tabs .tab.active {
+  background: var(--svm-black);
+  color: var(--svm-yellow);
+}
+
+.svm-auth-content {
+  padding: 20px;
+}
+
+.auth-form {
+  display: none;
+}
+
+.auth-form.active {
+  display: block;
+}
+
+.auth-form h2 {
+  margin-top: 0;
+  color: var(--svm-black);
+  font-weight: bold;
+  border-bottom: 2px solid var(--svm-yellow);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Vehicle Cards */
+.svm-vehicle-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.svm-vehicle-card {
+  background: var(--svm-white);
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.svm-vehicle-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.svm-vehicle-image {
+  height: 180px;
+  overflow: hidden;
+  background: var(--svm-medium-gray);
+}
+
+.svm-vehicle-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.svm-vehicle-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--svm-light-gray);
+  color: var(--svm-dark-gray);
+}
+
+.svm-vehicle-placeholder i {
+  font-size: 48px;
+}
+
+.svm-vehicle-details {
+  padding: 15px;
+  border-bottom: 1px solid var(--svm-light-gray);
+}
+
+.svm-vehicle-details h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--svm-black);
+  font-weight: bold;
+}
+
+.svm-vehicle-details p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.svm-vehicle-actions {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.status-pending {
+  background-color: var(--svm-yellow);
+  color: var(--svm-black);
+}
+
+.status-verified {
+  background-color: var(--svm-green);
+  color: var(--svm-white);
+}
+
+/* Status Banner */
+.svm-vehicle-status-banner {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.svm-vehicle-status-banner.status-pending {
+  background-color: #fff9e6;
+  border: 1px solid var(--svm-yellow);
+}
+
+.svm-vehicle-status-banner.status-verified {
+  background-color: #e8f5e9;
+  border: 1px solid var(--svm-green);
+}
+
+.svm-vehicle-status-banner .status-icon {
+  margin-right: 15px;
+  font-size: 24px;
+}
+
+.svm-vehicle-status-banner .status-text {
+  flex: 1;
+  font-weight: bold;
+}
+
+.svm-vehicle-status-banner .status-actions {
+  margin-left: 15px;
+}
+
+/* Profile */
+.shuttle-profile-form {
+  background: var(--svm-white);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+  background: var(--svm-light-gray);
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--svm-dark-gray);
+}
+
+.profile-placeholder i {
+  font-size: 48px;
+}
+
+.profile-status {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* Calendar */
+.svm-calendar {
+  margin-bottom: 20px;
+}
+
+.svm-calendar-instructions {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: var(--svm-light-gray);
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Google Calendar-like Availability Styles */
+.svm-calendar-container {
+  background: var(--svm-white);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  padding: 20px;
+}
+
+.svm-calendar-legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: var(--svm-light-gray);
+  border-radius: 6px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.legend-color.available {
+  background-color: var(--svm-green);
+}
+
+.legend-color.unavailable {
+  background-color: var(--svm-red);
+}
+
+.legend-color.today {
+  background-color: var(--svm-yellow);
+  border: 2px solid var(--svm-black);
+}
+
+.svm-availability-form {
+  background: var(--svm-light-gray);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.svm-availability-form h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--svm-black);
+}
+
+.svm-availability-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--svm-medium-gray);
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.availability-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.svm-availability-list {
+  margin-top: 30px;
+}
+
+.availability-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.availability-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--svm-medium-gray);
+  background: var(--svm-white);
+  position: relative;
+}
+
+.availability-item.available {
+  border-left: 4px solid var(--svm-green);
+}
+
+.availability-item.unavailable {
+  border-left: 4px solid var(--svm-red);
+}
+
+.item-dates {
+  font-weight: bold;
+  flex: 1;
+}
+
+.item-status {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.availability-item.available .item-status {
+  background: #e8f5e9;
+  color: var(--svm-green);
+}
+
+.availability-item.unavailable .item-status {
+  background: #ffebee;
+  color: var(--svm-red);
+}
+
+.item-note {
+  flex: 2;
+  color: var(--svm-dark-gray);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.remove-availability {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: var(--svm-red);
+  color: var(--svm-white);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.remove-availability:hover {
+  background: darkred;
+  transform: scale(1.1);
+}
+
+.no-availability {
+  text-align: center;
+  padding: 40px;
+  color: var(--svm-dark-gray);
+  background: var(--svm-light-gray);
+  border-radius: 6px;
+}
+
+/* Calendar Grid Style */
+.svm-calendar-grid {
+  background: var(--svm-white);
+  border: 1px solid var(--svm-medium-gray);
+  border-radius: 8px;
+  padding: 10px;
+  min-height: 300px;
+}
+
+/* Flatpickr Custom Styles for Google Calendar Look */
+.flatpickr-calendar {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border: none;
+  border-radius: 8px;
+}
+
+.flatpickr-day.selected {
+  background: var(--svm-yellow);
+  border-color: var(--svm-yellow);
+  color: var(--svm-black);
+}
+
+.flatpickr-day:hover {
+  background: var(--svm-light-gray);
+  border-color: var(--svm-medium-gray);
+}
+
+/* Notices */
+.svm-notice {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.svm-notice-warning {
+  background-color: #fff9e6;
+  border: 1px solid var(--svm-yellow);
+}
+
+.svm-notice-error {
+  background-color: #ffebee;
+  border: 1px solid var(--svm-red);
+}
+
+.svm-notice-success {
+  background-color: #e8f5e9;
+  border: 1px solid var(--svm-green);
+}
+
+/* Empty State */
+.svm-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.svm-empty-icon {
+  font-size: 48px;
+  color: var(--svm-medium-gray);
+  margin-bottom: 20px;
+}
+
+.svm-empty-state p {
+  margin-bottom: 20px;
+  color: var(--svm-dark-gray);
+}
+
+/* Document Preview */
+.document-preview {
+  margin-bottom: 10px;
+}
+
+/* Vehicle Images Gallery */
+.vehicle-images-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -5px;
+}
+
+.vehicle-image {
+  width: 150px;
+  height: 150px;
+  margin: 5px;
+  border: 1px solid var(--svm-medium-gray);
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.vehicle-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Form Notice */
+.form-notice {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  border-left: 3px solid #FFCB05;
+}
+
+.form-notice p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.required-star {
+  color: #FF0000;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .svm-dashboard-tabs {
+    flex-wrap: wrap;
+  }
+  
+  .svm-dashboard-tabs .tab {
+    flex: 1 0 auto;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  
+  .svm-dashboard-tabs .tab.logout {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .svm-vehicle-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .svm-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .svm-section-header h2 {
+    margin-bottom: 10px;
+  }
+  
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .profile-image {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .svm-calendar-legend {
+    flex-wrap: wrap;
+  }
+  
+  .availability-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 35px;
+  }
+  
+  .item-status {
+    margin: 5px 0;
+  }
+  
+  .item-note {
+    width: 100%;
+    margin-top: 5px;
+  }
+}
+
+/* Remove the calendar grid styles since we're not using it */
+.svm-calendar-grid {
+    display: none;
+}
+
+/* Update availability form styles */
+.svm-availability-form {
+    background: var(--svm-light-gray);
+    padding: 25px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px solid var(--svm-medium-gray);
+}
+
+/* Improve availability item layout */
+.availability-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid var(--svm-medium-gray);
+    background: var(--svm-white);
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.availability-item .item-content {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.availability-item .item-dates {
+    margin-bottom: 5px;
+    color: var(--svm-black);
+}
+
+.availability-item .item-note {
+    color: var(--svm-dark-gray);
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.availability-item .item-status {
+    position: absolute;
+    top: 15px;
+    right: 40px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Date picker improvements */
+#availability-dates {
+    cursor: pointer;
+    background-color: var(--svm-white);
+}
+
+#availability-dates:focus {
+    outline: 2px solid var(--svm-yellow);
+    outline-offset: 2px;
+}
+
+/* Clear selection button */
+#clear-selection {
+    margin-left: 10px;
+}
+
+/* Availability help section */
+.svm-availability-help {
+    background: #e3f2fd;
+    border: 1px solid #2196f3;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+.svm-availability-help h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #1976d2;
+}
+
+.svm-availability-help ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.svm-availability-help li {
+    margin-bottom: 5px;
+    color: #424242;
+}
+
+/* Flatpickr multiple selection styles */
+.flatpickr-day.selected {
+    background: var(--svm-yellow) !important;
+    border-color: var(--svm-yellow) !important;
+    color: var(--svm-black) !important;
+}
+
+.flatpickr-day.selected:hover {
+    background: var(--svm-black) !important;
+    border-color: var(--svm-black) !important;
+    color: var(--svm-yellow) !important;
+}
+
+/* Improve form message visibility */
+.form-message {
+    position: sticky;
+    top: 32px;
+    z-index: 100;
+    margin: 20px 0;
+}
+
+.form-message p {
+    margin: 0;
+    padding: 15px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+/* Flatpickr multiple selection improvements */
+.flatpickr-calendar.svm-flatpickr-multiple {
+    font-size: 14px;
+}
+
+.flatpickr-calendar.svm-flatpickr-multiple .flatpickr-day {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.flatpickr-calendar.svm-flatpickr-multiple .flatpickr-day:hover {
+    background: var(--svm-light-gray);
+    transform: scale(1.1);
+}
+
+.flatpickr-calendar.svm-flatpickr-multiple .flatpickr-day.selected {
+    background: var(--svm-yellow) !important;
+    color: var(--svm-black) !important;
+    font-weight: bold;
+    border: 2px solid var(--svm-black);
+}
+
+/* Make the date input field more prominent */
+#availability-dates {
+    font-size: 16px;
+    padding: 12px;
+    border: 2px solid var(--svm-medium-gray);
+    cursor: pointer !important;
+}
+
+#availability-dates:hover {
+    border-color: var(--svm-yellow);
+}
+
+#availability-dates:focus {
+    border-color: var(--svm-yellow);
+    box-shadow: 0 0 0 3px rgba(255, 203, 5, 0.2);
+}
+
+/* Description text styling */
+.form-group .description {
+    background: #f0f8ff;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 8px;
+    line-height: 1.6;
+}
+
+/* Visual Calendar Styles */
+.svm-calendar-display {
+    background: var(--svm-white);
+    border: 1px solid var(--svm-medium-gray);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.svm-calendar-display h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--svm-black);
+}
+
+.visual-calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.visual-calendar-header h4 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--svm-black);
+}
+
+.cal-nav {
+    background: var(--svm-yellow);
+    border: none;
+    color: var(--svm-black);
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.cal-nav:hover {
+    background: var(--svm-black);
+    color: var(--svm-yellow);
+}
+
+.visual-calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.visual-calendar-table th {
+    background: var(--svm-light-gray);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid var(--svm-medium-gray);
+}
+
+.visual-calendar-table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid var(--svm-medium-gray);
+    cursor: default;
+    position: relative;
+}
+
+.calendar-date {
+    font-weight: 500;
+}
+
+.calendar-date.date-available {
+    background: #e8f5e9;
+    color: var(--svm-green);
+    font-weight: bold;
+}
+
+.calendar-date.date-unavailable {
+    background: #ffebee;
+    color: var(--svm-red);
+    font-weight: bold;
+}
+
+.calendar-date.date-today {
+    border: 2px solid var(--svm-yellow);
+    font-weight: bold;
+}
+
+.calendar-date:hover {
+    opacity: 0.8;
+}
+
+/* Tooltip for calendar dates */
+.calendar-date[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--svm-black);
+    color: var(--svm-white);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+/* Responsive calendar */
+@media (max-width: 600px) {
+    .visual-calendar-table {
+        font-size: 12px;
+    }
+    
+    .visual-calendar-table td {
+        padding: 8px;
+    }
+}
+
+/* Fix for Flatpickr on mobile */
+@media (max-width: 768px) {
+    .flatpickr-calendar {
+        font-size: 16px !important;
+    }
+    
+    .flatpickr-day {
+        height: 40px !important;
+        line-height: 40px !important;
+    }
+}
+
+/* Interactive Calendar Styles */
+.svm-interactive-calendar {
+    background: var(--svm-white);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.svm-calendar-instructions {
+    background: #e3f2fd;
+    border: 1px solid #2196f3;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 15px 0;
+    text-align: center;
+    color: #1976d2;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: var(--svm-black);
+}
+
+.cal-nav {
+    background: var(--svm-yellow);
+    border: none;
+    color: var(--svm-black);
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.cal-nav:hover {
+    background: var(--svm-black);
+    color: var(--svm-yellow);
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar-table th {
+    background: var(--svm-light-gray);
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid var(--svm-medium-gray);
+    color: var(--svm-black);
+}
+
+.calendar-table td {
+    border: 1px solid var(--svm-medium-gray);
+    height: 80px;
+    vertical-align: top;
+    position: relative;
+    background: var(--svm-white);
+}
+
+.calendar-date {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 8px;
+}
+
+.calendar-date:hover:not(.date-past) {
+    background: var(--svm-light-gray);
+}
+
+.calendar-date.date-past {
+    background: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.date-number {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.calendar-date.date-available {
+    background: #e8f5e9;
+}
+
+.calendar-date.date-available:hover:not(.date-past) {
+    background: #c8e6c9;
+}
+
+.calendar-date.date-unavailable {
+    background: #ffebee;
+}
+
+.calendar-date.date-unavailable:hover:not(.date-past) {
+    background: #ffcdd2;
+}
+
+.calendar-date.date-today {
+    border: 3px solid var(--svm-yellow);
+}
+
+.date-note-indicator {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 14px;
+    cursor: help;
+}
+
+.empty-cell {
+    background: #fafafa;
+}
+
+/* Modal Styles */
+.svm-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+}
+
+.svm-modal-content {
+    background-color: var(--svm-white);
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.svm-modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.svm-modal-close:hover,
+.svm-modal-close:focus {
+    color: var(--svm-black);
+}
+
+#modal-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--svm-black);
+    border-bottom: 2px solid var(--svm-yellow);
+    padding-bottom: 10px;
+}
+
+.selected-date {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--svm-black);
+    background: var(--svm-light-gray);
+    padding: 10px;
+    border-radius: 4px;
+    margin: 0;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 8px;
+}
+
+.radio-label {
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.radio-label.available {
+    background: #e8f5e9;
+    color: var(--svm-green);
+}
+
+.radio-label.unavailable {
+    background: #ffebee;
+    color: var(--svm-red);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: flex-end;
+}
+
+#availability-note {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--svm-medium-gray);
+    border-radius: 4px;
+    resize: vertical;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .calendar-table {
+        font-size: 12px;
+    }
+    
+    .calendar-table td {
+        height: 60px;
+        padding: 4px;
+    }
+    
+    .date-number {
+        font-size: 14px;
+    }
+    
+    .svm-modal-content {
+        width: 95%;
+        margin: 20% auto;
+        padding: 20px;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+    }
+    
+    .modal-buttons button {
+        width: 100%;
+    }
+}
+
+/* Remove old styles that are no longer needed */
+.svm-calendar-grid,
+.svm-availability-form,
+.svm-availability-list {
+    display: none;
+}
+
+/* Availability Tab Styles */
+.svm-availability-section {
+    padding: 20px 0;
+}
+
+.svm-availability-section h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.svm-availability-section > p {
+    margin-bottom: 30px;
+    color: #666;
+    font-size: 16px;
+}
+
+.svm-vehicles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.svm-vehicle-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.svm-vehicle-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.vehicle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+}
+
+.vehicle-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.vehicle-license {
+    background: #FFCB05;
+    color: #000;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.reservation-status {
+    margin-bottom: 15px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.status-badge.available {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-badge.reserved {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.vehicle-actions {
+    margin-top: 15px;
+}
+
+.vehicle-actions .svm-button {
+    width: 100%;
+    text-align: center;
+}

@@ -1,0 +1,265 @@
+/* Fix page layout - Remove extra padding from Luxride theme */
+body.vehicle-owners_page_shuttle-available-vehicles #wpcontent {
+    padding-left: 0 !important;
+}
+
+body.vehicle-owners_page_shuttle-available-vehicles #wpbody-content {
+    padding-bottom: 0 !important;
+}
+
+body.vehicle-owners_page_shuttle-available-vehicles .wrap {
+    margin: 10px 20px 0 2px !important;
+}
+
+/* Override Luxride's container styles on this page */
+body.vehicle-owners_page_shuttle-available-vehicles .auto-container,
+body.vehicle-owners_page_shuttle-available-vehicles .container,
+body.vehicle-owners_page_shuttle-available-vehicles .container-fluid,
+body.vehicle-owners_page_shuttle-available-vehicles .large-container,
+body.vehicle-owners_page_shuttle-available-vehicles .medium-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    width: auto !important;
+}
+
+/* Main admin wrap specific fix */
+body.vehicle-owners_page_shuttle-available-vehicles .wrap.svm-admin-wrap {
+    max-width: none !important;
+    margin: 20px 20px 20px 0 !important;
+    padding: 0 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+/* Admin card without extra padding */
+body.vehicle-owners_page_shuttle-available-vehicles .svm-admin-card {
+    background: #FFFFFF !important;
+    border: 1px solid #DDDDDD !important;
+    border-radius: 5px !important;
+    margin-bottom: 20px !important;
+    padding: 20px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+}
+
+/* Calendar container fix */
+body.vehicle-owners_page_shuttle-available-vehicles .svm-admin-calendar-container {
+    background: #FFFFFF !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    min-height: 600px !important;
+    box-sizing: border-box !important;
+}
+
+/* Modal Complete Fix */
+#admin-vehicles-modal {
+    display: none;
+    position: fixed !important;
+    z-index: 999999 !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: auto !important;
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+#admin-vehicles-modal.svm-modal {
+    padding: 50px 0 !important;
+}
+
+/* When modal is shown */
+#admin-vehicles-modal[style*="display: block"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Modal content */
+#admin-vehicles-modal .svm-modal-content {
+    background-color: #FFFFFF !important;
+    margin: auto !important;
+    padding: 0 !important;
+    border: 1px solid #888 !important;
+    border-radius: 8px !important;
+    position: relative !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+    overflow: hidden !important;
+}
+
+#admin-vehicles-modal .svm-modal-content.svm-modal-wide {
+    width: 90% !important;
+    max-width: 900px !important;
+}
+
+/* Modal header with title */
+#admin-vehicles-modal h3#modal-date-title {
+    margin: 0 !important;
+    padding: 20px 30px !important;
+    background-color: #FFCB05 !important;
+    color: #000000 !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    border-bottom: 1px solid #DDDDDD !important;
+}
+
+/* Close button */
+#admin-vehicles-modal .svm-modal-close {
+    color: #000000 !important;
+    position: absolute !important;
+    right: 25px !important;
+    top: 20px !important;
+    font-size: 35px !important;
+    font-weight: normal !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+#admin-vehicles-modal .svm-modal-close:hover,
+#admin-vehicles-modal .svm-modal-close:focus {
+    color: #333333 !important;
+    text-decoration: none !important;
+}
+
+/* Vehicles container */
+#admin-vehicles-modal #vehicles-list-container {
+    padding: 30px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 30px !important;
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+}
+
+/* Vehicle sections */
+#admin-vehicles-modal .vehicles-section {
+    background: #F5F5F5 !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+}
+
+/* Section titles */
+#admin-vehicles-modal h4.section-title {
+    margin: 0 0 20px 0 !important;
+    padding: 10px !important;
+    border-radius: 4px !important;
+    text-align: center !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+}
+
+#admin-vehicles-modal h4.section-title.available {
+    background: #4CAF50 !important;
+    color: #FFFFFF !important;
+}
+
+#admin-vehicles-modal h4.section-title.unavailable {
+    background: #FF4D4D !important;
+    color: #FFFFFF !important;
+}
+
+/* Vehicle cards */
+#admin-vehicles-modal .vehicle-card {
+    background: #FFFFFF !important;
+    border: 1px solid #DDDDDD !important;
+    border-radius: 6px !important;
+    padding: 15px !important;
+    margin-bottom: 15px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+}
+
+/* Vehicle and owner info */
+#admin-vehicles-modal .vehicle-info h5,
+#admin-vehicles-modal .owner-info h6 {
+    margin: 0 0 10px 0 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+#admin-vehicles-modal .vehicle-info p,
+#admin-vehicles-modal .owner-info p {
+    margin: 5px 0 !important;
+    font-size: 14px !important;
+    color: #333333 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+#admin-vehicles-modal .owner-info {
+    border-left: 1px solid #DDDDDD !important;
+    padding-left: 20px !important;
+}
+
+/* Action buttons */
+#admin-vehicles-modal .action-buttons {
+    display: flex !important;
+    gap: 10px !important;
+    margin-top: 10px !important;
+}
+
+#admin-vehicles-modal .svm-button {
+    background-color: #FFCB05 !important;
+    color: #000000 !important;
+    padding: 6px 12px !important;
+    text-decoration: none !important;
+    border-radius: 4px !important;
+    font-weight: bold !important;
+    font-size: 12px !important;
+    display: inline-block !important;
+    transition: all 0.3s ease !important;
+}
+
+#admin-vehicles-modal .svm-button:hover {
+    background-color: #000000 !important;
+    color: #FFCB05 !important;
+}
+
+/* No vehicles message */
+#admin-vehicles-modal .no-vehicles {
+    text-align: center !important;
+    padding: 40px !important;
+    color: #666666 !important;
+    font-style: italic !important;
+}
+
+/* Override all Luxride styles in modal */
+#admin-vehicles-modal * {
+    box-sizing: border-box !important;
+}
+
+#admin-vehicles-modal .container,
+#admin-vehicles-modal .row,
+#admin-vehicles-modal [class*="col-"] {
+    width: auto !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #admin-vehicles-modal #vehicles-list-container {
+        grid-template-columns: 1fr !important;
+    }
+    
+    #admin-vehicles-modal .vehicle-card {
+        grid-template-columns: 1fr !important;
+    }
+    
+    #admin-vehicles-modal .owner-info {
+        border-left: none !important;
+        border-top: 1px solid #DDDDDD !important;
+        padding-left: 0 !important;
+        padding-top: 15px !important;
+        margin-top: 15px !important;
+    }
+}
