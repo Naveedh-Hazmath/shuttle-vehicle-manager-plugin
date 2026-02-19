@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Shuttle Vehicle Manager
- * Plugin URI: https://example.com/shuttle-vehicle-manager
+ * Plugin URI: https://nvd.lk/#
  * Description: A plugin to manage shuttle vehicles, owners, and availability with profile management.
- * Version: 1.4.4
- * Author: CyberHustle Global
- * Author URI: https://cyberhustle.global
+ * Version: 1.4.5
+ * Author: Next Vision Digital
+ * Author URI: https://nvd.lk/
  * Text Domain: shuttle-vehicle-manager
  * Domain Path: /languages
  */
@@ -15,12 +15,13 @@ if (!defined('WPINC')) {
     die;
 }
 
-define('SHUTTLE_VEHICLE_MANAGER_VERSION', '1.0.0');
+define('SHUTTLE_VEHICLE_MANAGER_VERSION', '1.5.0');
 define('SHUTTLE_VEHICLE_MANAGER_PATH', plugin_dir_path(__FILE__));
 define('SHUTTLE_VEHICLE_MANAGER_URL', plugin_dir_url(__FILE__));
 
 // Include required files
 require_once SHUTTLE_VEHICLE_MANAGER_PATH . 'includes/class-shuttle-vehicle-manager.php';
+require_once SHUTTLE_VEHICLE_MANAGER_PATH . 'includes/class-shuttle-rest-api.php';
 
 // Activation and deactivation hooks
 register_activation_hook(__FILE__, 'shuttle_vehicle_manager_activate');
@@ -92,3 +93,6 @@ function run_shuttle_vehicle_manager() {
 
 // Initialize the plugin
 add_action('plugins_loaded', 'run_shuttle_vehicle_manager');
+
+// Initialize REST API
+$rest_api = new Shuttle_Vehicle_REST_API();

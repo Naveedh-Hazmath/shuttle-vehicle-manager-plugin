@@ -43,6 +43,9 @@ class Shuttle_Vehicle_Post_Type {
             'supports'           => array('title', 'thumbnail', 'author'),
             'menu_icon'          => 'dashicons-car',
             'taxonomies'         => array('vehicle_status'),
+            'show_in_rest'       => true,
+            'rest_base'          => 'vehicles',
+            'rest_controller_class' => 'WP_REST_Posts_Controller',
         );
 
         register_post_type('vehicle', $args);
