@@ -102,6 +102,34 @@ class Shuttle_Vehicle_REST_API {
             'callback' => array($this, 'get_auth_status'),
             'permission_callback' => '__return_true',
         ));
+
+        // User login
+        register_rest_route('lankashuttle/v1', '/auth/login', array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => array($this, 'rest_login'),
+            'permission_callback' => '__return_true',
+        ));
+
+        // User registration
+        register_rest_route('lankashuttle/v1', '/auth/register', array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => array($this, 'rest_register'),
+            'permission_callback' => '__return_true',
+        ));
+
+        // User logout
+        register_rest_route('lankashuttle/v1', '/auth/logout', array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => array($this, 'rest_logout'),
+            'permission_callback' => array($this, 'check_user_logged_in'),
+        ));
+
+        // Current user info
+        register_rest_route('lankashuttle/v1', '/auth/me', array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => array($this, 'rest_get_current_user'),
+            'permission_callback' => array($this, 'check_user_logged_in'),
+        ));
     }
 
     /**
@@ -548,6 +576,251 @@ class Shuttle_Vehicle_REST_API {
                 'email' => $current_user->user_email,
                 'roles' => $current_user->roles,
             ),
+        ));
+    }
+
+    /**
+     * REST Login endpoint
+     */
+    public function rest_login($request) {
+        $params = $request->get_json_params();
+
+        if (!isset($params['mobile_number']) || empty($params['mobile_number'])) {
+            return new WP_Error(
+                'missing_mobile',
+                __('Mobile number is required', 'shuttle-vehicle-manager'),
+                array('status' => 400)
+            );
+        }
+
+        if (!isset($params['password']) || empty($params['password'])) {
+            return new WP_Error(
+                'missing_password',
+                __('Password is required', 'shuttle-vehicle-manager'),
+                array('status' => 400)
+            );
+        }
+
+        $mobile_number = sanitize_text_field($params['mobile_number']);
+        $password = $params['password'];
+
+        // Find user by mobile number (stored in user meta)
+        $user_query = new WP_User_Query(array(
+            'meta_key' => 'mobile_number',
+            'meta_value' => $mobile_number,
+            'number' => 1,
+        ));
+
+        $users = $user_query->get_results();
+
+        if (empty($users)) {
+            return new WP_Error(
+                'invalid_credentials',
+                __('Invalid mobile number or password', 'shuttle-vehicle-manager'),
+                array('status' => 401)
+            );
+        }
+
+        $user = $users[0];
+
+        // Verify password
+        if (!wp_check_password($password, $user->user_pass, $user->ID)) {
+            return new WP_Error(
+                'invalid_credentials',
+                __('Invalid mobile number or password', 'shuttle-vehicle-manager'),
+                array('status' => 401)
+            );
+        }
+
+        // Log the user in
+        wp_set_current_user($user->ID);
+        wp_set_auth_cookie($user->ID, isset($params['remember']) && $params['remember'] ? true : false);
+
+        return rest_ensure_response(array(
+            'success' => true,
+            'message' => __('Login successful', 'shuttle-vehicle-manager'),
+            'user' => array(
+                'id' => $user->ID,
+                'username' => $user->user_login,
+                'email' => $user->user_email,
+                'roles' => $user->roles,
+                'full_name' => get_user_meta($user->ID, 'full_name', true),
+            ),
+        ));
+    }
+
+    /**
+     * REST Register endpoint
+     */
+    public function rest_register($request) {
+        $params = $request->get_json_params();
+
+        // Validate required fields
+        if (!isset($params['mobile_number']) || empty($params['mobile_number'])) {
+            return new WP_Error(
+                'missing_mobile',
+                __('Mobile number is required', 'shuttle-vehicle-manager'),
+                array('status' => 400)
+            );
+        }
+
+        if (!isset($params['password']) || empty($params['password'])) {
+            return new WP_Error(
+                'missing_password',
+                __('Password is required', 'shuttle-vehicle-manager'),
+                array('status' => 400)
+            );
+        }
+
+        if (!isset($params['confirm_password']) || empty($params['confirm_password'])) {
+            return new WP_Error(
+                'missing_confirm_password',
+                __('Please confirm your password', 'shuttle-vehicle-manager'),
+                array('status' => 400)
+            );
+        }
+
+        $mobile_number = sanitize_text_field($params['mobile_number']);
+        $password = $params['password'];
+        $confirm_password = $params['confirm_password'];
+
+        // Validate passwords match
+        if ($password !== $confirm_password) {
+            return new WP_Error(
+                'password_mismatch',
+                __('Passwords do not match', 'shuttle-vehicle-manager'),
+                array('status' => 400)
+            );
+        }
+
+        // Validate password strength
+        if (strlen($password) < 6) {
+            return new WP_Error(
+                'weak_password',
+                __('Password must be at least 6 characters', 'shuttle-vehicle-manager'),
+                array('status' => 400)
+            );
+        }
+
+        // Check if mobile number already exists
+        $existing_user = new WP_User_Query(array(
+            'meta_key' => 'mobile_number',
+            'meta_value' => $mobile_number,
+            'number' => 1,
+        ));
+
+        if (!empty($existing_user->get_results())) {
+            return new WP_Error(
+                'mobile_exists',
+                __('This mobile number is already registered', 'shuttle-vehicle-manager'),
+                array('status' => 400)
+            );
+        }
+
+        // Create username from mobile number (remove special characters)
+        $username = 'user_' . preg_replace('/[^0-9]/', '', $mobile_number);
+        $username = substr($username, 0, 30); // WordPress username max length
+
+        // Check if username is available
+        $counter = 1;
+        $original_username = $username;
+        while (username_exists($username)) {
+            $username = $original_username . $counter;
+            $counter++;
+        }
+
+        // Create the user
+        $user_id = wp_create_user(
+            $username,
+            $password,
+            $mobile_number . '@shuttlevehicle.local' // Temporary email
+        );
+
+        if (is_wp_error($user_id)) {
+            return new WP_Error(
+                'registration_failed',
+                $user_id->get_error_message(),
+                array('status' => 500)
+            );
+        }
+
+        // Add vehicle_owner role
+        $user = new WP_User($user_id);
+        $user->add_role('vehicle_owner');
+
+        // Set mobile number in user meta
+        update_user_meta($user_id, 'mobile_number', $mobile_number);
+
+        // Set initial profile status as pending
+        update_user_meta($user_id, 'profile_status', 'pending');
+
+        // Log the user in
+        wp_set_current_user($user_id);
+        wp_set_auth_cookie($user_id, false);
+
+        return rest_ensure_response(array(
+            'success' => true,
+            'message' => __('Registration successful. Please complete your profile.', 'shuttle-vehicle-manager'),
+            'user' => array(
+                'id' => $user_id,
+                'username' => $username,
+                'email' => $mobile_number . '@shuttlevehicle.local',
+                'roles' => array('vehicle_owner'),
+                'mobile_number' => $mobile_number,
+                'profile_status' => 'pending',
+            ),
+        ));
+    }
+
+    /**
+     * REST Logout endpoint
+     */
+    public function rest_logout($request) {
+        wp_logout();
+
+        return rest_ensure_response(array(
+            'success' => true,
+            'message' => __('Logout successful', 'shuttle-vehicle-manager'),
+        ));
+    }
+
+    /**
+     * REST Get current user endpoint
+     */
+    public function rest_get_current_user($request) {
+        if (!is_user_logged_in()) {
+            return new WP_Error(
+                'not_logged_in',
+                __('You are not logged in', 'shuttle-vehicle-manager'),
+                array('status' => 401)
+            );
+        }
+
+        $current_user = wp_get_current_user();
+        $owner_profile = new Shuttle_Owner_Profile();
+        $profile_fields = $owner_profile->get_profile_fields();
+
+        $user_data = array(
+            'id' => $current_user->ID,
+            'username' => $current_user->user_login,
+            'email' => $current_user->user_email,
+            'roles' => $current_user->roles,
+            'mobile_number' => get_user_meta($current_user->ID, 'mobile_number', true),
+            'full_name' => get_user_meta($current_user->ID, 'full_name', true),
+            'profile_image' => get_user_meta($current_user->ID, 'profile_image', true),
+            'profile_status' => get_user_meta($current_user->ID, 'profile_status', true) ?: 'pending',
+        );
+
+        // Include all profile fields
+        foreach ($profile_fields as $key => $field) {
+            if ($key !== 'email' && $key !== 'mobile_number') {
+                $user_data[$key] = get_user_meta($current_user->ID, $key, true);
+            }
+        }
+
+        return rest_ensure_response(array(
+            'success' => true,
+            'data' => $user_data,
         ));
     }
 

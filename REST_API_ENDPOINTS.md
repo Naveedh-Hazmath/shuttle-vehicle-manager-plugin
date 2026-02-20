@@ -1,6 +1,6 @@
 # Shuttle Vehicle Manager - REST API Quick Reference
 
-**Base URL:** `https://lankashuttle.lk/wp-json/lankashuttle/v1`
+**Base URL:** `https://siteurl.com/wp-json/lankashuttle/v1`
 
 ## Public Endpoints (No Authentication Required)
 
@@ -292,7 +292,7 @@ All error responses follow this format:
 
 ```javascript
 // Base API Configuration
-const API_BASE = "https://lankashuttle.lk/wp-json/lankashuttle/v1";
+const API_BASE = "https://siteurl.com/wp-json/lankashuttle/v1";
 
 // Get all vehicles
 async function getVehicles(page = 1, status = null) {

@@ -2,7 +2,7 @@
 
 ## Base URL
 ```
-https://lankashuttle.lk/wp-json/lankashuttle/v1
+https://siteurl.com/wp-json/lankashuttle/v1
 ```
 
 ---
@@ -107,12 +107,12 @@ GET /vehicles/123
       "usb_charging"
     ],
     "images": [
-      "https://lankashuttle.lk/wp-content/uploads/2024/01/vehicle-1.jpg",
-      "https://lankashuttle.lk/wp-content/uploads/2024/01/vehicle-2.jpg"
+      "https://siteurl.com/wp-content/uploads/2024/01/vehicle-1.jpg",
+      "https://siteurl.com/wp-content/uploads/2024/01/vehicle-2.jpg"
     ],
-    "rc_document": "https://lankashuttle.lk/wp-content/uploads/2024/01/rc.pdf",
-    "insurance_document": "https://lankashuttle.lk/wp-content/uploads/2024/01/insurance.pdf",
-    "emission_document": "https://lankashuttle.lk/wp-content/uploads/2024/01/emission.pdf",
+    "rc_document": "https://siteurl.com/wp-content/uploads/2024/01/rc.pdf",
+    "insurance_document": "https://siteurl.com/wp-content/uploads/2024/01/insurance.pdf",
+    "emission_document": "https://siteurl.com/wp-content/uploads/2024/01/emission.pdf",
     "revenue_license_document": null,
     "fitness_document": null,
     "availability_data": "[{\"dates\": [\"2024-02-10\", \"2024-02-11\"], \"note\": \"Wedding event\"}]"
@@ -497,7 +497,7 @@ GET /user/profile
     "whatsapp_number": "+94771234567",
     "address": "123 Main Street, Colombo 01",
     "profile_status": "verified",
-    "profile_image": "https://lankashuttle.lk/wp-content/uploads/2024/01/profile.jpg",
+    "profile_image": "https://siteurl.com/wp-content/uploads/2024/01/profile.jpg",
     "roles": ["vehicle_owner"]
   }
 }
@@ -649,7 +649,7 @@ Available vehicle features that can be specified when creating/updating vehicles
 
 #### Get all verified vehicles
 ```javascript
-fetch('https://lankashuttle.lk/wp-json/lankashuttle/v1/vehicles?status=verified&page=1&per_page=10')
+fetch('https://siteurl.com/wp-json/lankashuttle/v1/vehicles?status=verified&page=1&per_page=10')
   .then(response => response.json())
   .then(data => console.log(data));
 ```
@@ -666,7 +666,7 @@ const vehicleData = {
   vehicle_features: ["high_back_seats", "full_ac", "wifi_free"]
 };
 
-fetch('https://lankashuttle.lk/wp-json/lankashuttle/v1/vehicles', {
+fetch('https://siteurl.com/wp-json/lankashuttle/v1/vehicles', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -689,7 +689,7 @@ const availabilityData = {
   ]
 };
 
-fetch('https://lankashuttle.lk/wp-json/lankashuttle/v1/vehicles/123/availability', {
+fetch('https://siteurl.com/wp-json/lankashuttle/v1/vehicles/123/availability', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -705,12 +705,12 @@ fetch('https://lankashuttle.lk/wp-json/lankashuttle/v1/vehicles/123/availability
 
 #### Get all vehicles
 ```bash
-curl -X GET "https://lankashuttle.lk/wp-json/lankashuttle/v1/vehicles?status=verified"
+curl -X GET "https://siteurl.com/wp-json/lankashuttle/v1/vehicles?status=verified"
 ```
 
 #### Create a vehicle
 ```bash
-curl -X POST "https://lankashuttle.lk/wp-json/lankashuttle/v1/vehicles" \
+curl -X POST "https://siteurl.com/wp-json/lankashuttle/v1/vehicles" \
   -H "Content-Type: application/json" \
   -b "wordpress_cookies.txt" \
   -d '{
@@ -724,11 +724,3 @@ curl -X POST "https://lankashuttle.lk/wp-json/lankashuttle/v1/vehicles" \
 ```
 
 ---
-
-## Migration Notes
-
-- The existing website functionality remains unchanged
-- All current shortcodes and AJAX endpoints continue to work
-- New REST API is an additional layer for mobile app consumption
-- No database schema changes were made
-- Both AJAX and REST endpoints use the same business logic where possible

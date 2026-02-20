@@ -61,13 +61,6 @@ As an admin, you can verify vehicle owners from the Vehicle Owners menu in the a
 
 Yes, use the Available Vehicles section in the admin panel to filter vehicles by date range.
 
-== Screenshots ==
-
-1. Frontend Dashboard
-2. Vehicle Registration Form
-3. Admin Panel - Vehicle Owners List
-4. Admin Panel - Vehicle Details
-
 == Changelog ==
 
 = 1.0.0 =

@@ -76,7 +76,6 @@ jQuery(document).ready(function($) {
         }
     });
 
-    // Add this to your admin JavaScript
     jQuery(document).ready(function($) {
         // When showing the modal
         $(document).on('click', '.admin-date', function() {

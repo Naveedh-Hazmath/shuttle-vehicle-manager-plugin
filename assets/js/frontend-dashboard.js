@@ -241,7 +241,4 @@ jQuery(document).ready(function($) {
             }
         });
     });
-
-    // Clear availability calendar - removed old code
-    // Save availability - removed old code as it's now inline in the PHP
 });

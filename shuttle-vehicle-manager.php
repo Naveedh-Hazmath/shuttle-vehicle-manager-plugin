@@ -3,7 +3,7 @@
  * Plugin Name: Shuttle Vehicle Manager
  * Plugin URI: https://nvd.lk/#
  * Description: A plugin to manage shuttle vehicles, owners, and availability with profile management.
- * Version: 1.4.5
+ * Version: 1.4.6
  * Author: Next Vision Digital
  * Author URI: https://nvd.lk/
  * Text Domain: shuttle-vehicle-manager

@@ -2,7 +2,7 @@
 
 **For:** Mobile App Development Team  
 **API Version:** 1.0 (REST API v1)  
-**Base URL:** `https://lankashuttle.lk/wp-json/lankashuttle/v1`
+**Base URL:** `https://siteurl.com/wp-json/lankashuttle/v1`
 
 ---
 
@@ -12,7 +12,7 @@
 
 **JavaScript/React Native:**
 ```javascript
-const API_BASE_URL = "https://lankashuttle.lk/wp-json/lankashuttle/v1";
+const API_BASE_URL = "https://siteurl.com/wp-json/lankashuttle/v1";
 
 class ShuttleAPI {
   constructor(baseURL = API_BASE_URL) {
@@ -117,7 +117,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ShuttleAPI {
-  static const String baseURL = 'https://lankashuttle.lk/wp-json/lankashuttle/v1';
+  static const String baseURL = 'https://siteurl.com/wp-json/lankashuttle/v1';
   String? _token;
 
   ShuttleAPI({String? token}) : _token = token;
